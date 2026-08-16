@@ -30,9 +30,10 @@
 @media(max-width:720px){.hero h1{font-size:38px!important;line-height:1.05}.hero-copy{max-width:100%;transform:translateY(-8px)}.intro-photo-new .photo-main{height:auto!important;aspect-ratio:1.5/1;object-fit:cover}}
 
 .hero .hero-copy{transform:translateY(-84px)}
-.hero .hero-copy h1{font-size:clamp(46px,4.75vw,66px);max-width:660px}
+.hero .hero-copy h1{font-size:clamp(46px,4.5vw,62px);max-width:590px}
 .hero .hero-bg{transform:scale(1.075);transform-origin:center;transition:opacity 1.8s ease,transform 7s ease}
 .hero .hero-bg.active{transform:scale(.985)}
-.hero .hero-bg.flip{transform:scaleX(-1) scale(1.075)}
-.hero .hero-bg.flip.active{transform:scaleX(-1) scale(.985)}
-@media(max-width:720px){.hero .hero-copy{transform:translateY(-24px)}.hero .hero-copy h1{font-size:36px!important;max-width:340px}.hero .hero-bg{background-position:center!important}}
+.hero .hero-grid{grid-template-columns:1fr 1fr}
+.hero .hero-copy{grid-column:2}
+.hero .hero-shade{background:linear-gradient(270deg,rgba(13,29,41,.88) 0%,rgba(17,34,47,.58) 47%,rgba(17,34,47,.08) 100%)}
+@media(max-width:720px){.hero .hero-grid{grid-template-columns:1fr}.hero .hero-copy{grid-column:1;transform:translateY(-24px)}.hero .hero-copy h1{font-size:36px!important;max-width:340px}.hero .hero-bg{background-position:center!important}.hero .hero-shade{background:linear-gradient(90deg,rgba(13,29,41,.84),rgba(17,34,47,.3))}}
