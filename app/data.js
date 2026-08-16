@@ -1,13 +1,25 @@
 export const services = [
-  ['01','Implantologia','Trwałe uzupełnienie brakujących zębów z wykorzystaniem implantów i nowoczesnej diagnostyki 3D.','◎'],
-  ['02','Protetyka','Korony, mosty, licówki oraz uzupełnienia ruchome przywracające funkcję i estetykę uśmiechu.','◇'],
-  ['03','Stomatologia zachowawcza','Leczenie próchnicy i estetyczne wypełnienia imitujące naturalne, zdrowe zęby.','○'],
-  ['04','Stomatologia estetyczna','Bonding, licówki i wybielanie dla naturalnego, harmonijnego efektu dopasowanego do pacjenta.','✦'],
-  ['05','Endodoncja mikroskopowa','Precyzyjne leczenie kanałowe pod mikroskopem, wspierane cyfrową diagnostyką.','⌁'],
-  ['06','Higienizacja','Skaling, piaskowanie, polerowanie i profilaktyka pomagające zachować zdrowie zębów i dziąseł.','◌'],
-  ['07','Chirurgia stomatologiczna','Usuwanie zębów, zabiegi mikrochirurgiczne, plastyka tkanek i procedury regeneracyjne.','+'],
-  ['08','Ortodoncja','Diagnostyka i leczenie wad zgryzu u dzieci oraz dorosłych z wykorzystaniem skanów 3D.','≈']
-].map(([n,title,text,icon])=>({n,title,text,icon}));
+  ['01','Implantologia','implantologia','Trwałe uzupełnienie brakujących zębów z wykorzystaniem implantów i precyzyjnego planowania.','◎'],
+  ['02','Protetyka','protetyka','Korony, mosty oraz uzupełnienia ruchome przywracające funkcję i naturalny wygląd.','◇'],
+  ['03','Stomatologia zachowawcza','stomatologia-zachowawcza','Leczenie próchnicy i estetyczne wypełnienia dopasowane do naturalnych zębów.','○'],
+  ['04','Stomatologia estetyczna','stomatologia-estetyczna','Wybielanie i estetyczne odbudowy dla harmonijnego efektu dopasowanego do pacjenta.','✦'],
+  ['05','Endodoncja mikroskopowa','endodoncja-mikroskopowa','Precyzyjne leczenie kanałowe pod mikroskopem, wspierane diagnostyką cyfrową.','⌁'],
+  ['06','Higienizacja','higienizacja','Skaling, piaskowanie i fluoryzacja pomagające zachować zdrowie zębów i dziąseł.','◌'],
+  ['07','Chirurgia stomatologiczna','chirurgia-stomatologiczna','Usuwanie zębów, zabiegi mikrochirurgiczne i procedury na tkankach jamy ustnej.','+'],
+  ['08','Ortodoncja','ortodoncja','Diagnostyka i leczenie wad zgryzu u dzieci, młodzieży oraz dorosłych.','≈']
+].map(([n,title,slug,text,icon])=>({n,title,slug,text,icon}));
+
+export const offerServices = [
+  {slug:'stomatologia-zachowawcza', title:'Stomatologia zachowawcza', kicker:'Zdrowie naturalnych zębów', intro:'Rozpoznajemy i leczymy próchnicę, dbając o możliwie oszczędną odbudowę zęba i naturalny efekt estetyczny.', when:['ubytki próchnicowe','nadwrażliwość lub dyskomfort','wymiana nieszczelnych wypełnień'], scope:['badanie i diagnostyka','leczenie próchnicy','wysokiej klasy wypełnienia estetyczne'], image:'/gallery/galeria-09.jpg'},
+  {slug:'endodoncja-mikroskopowa', title:'Endodoncja mikroskopowa', kicker:'Precyzyjne leczenie kanałowe', intro:'Leczenie miazgi i tkanek wokół korzenia prowadzimy w powiększeniu, z cyfrową kontrolą i szczelnym wypełnieniem kanałów.', when:['silny lub nawracający ból zęba','stan zapalny miazgi','powtórne leczenie kanałowe'], scope:['mikroskop zabiegowy','cyfrowa radiografia i endometr','termiczne wypełnianie gutaperką','usuwanie złamanych narzędzi i udrażnianie kanałów'], image:'/gallery/galeria-15.jpg'},
+  {slug:'chirurgia-stomatologiczna', title:'Chirurgia stomatologiczna', kicker:'Bezpieczne zabiegi chirurgiczne', intro:'Wykonujemy pełny zakres najczęstszych zabiegów chirurgii stomatologicznej po wcześniejszej diagnostyce i kwalifikacji.', when:['ząb niemożliwy do zachowania','zatrzymane ósemki','zmiany wymagające leczenia chirurgicznego'], scope:['usuwanie zębów i zębów zatrzymanych','resekcje wierzchołków korzeni','plastyka wędzidełka i wyrostka','usuwanie torbieli z badaniem histopatologicznym'], image:'/gallery/galeria-18.jpg'},
+  {slug:'protetyka', title:'Protetyka', kicker:'Odbudowa funkcji i estetyki', intro:'Odtwarzamy brakujące lub osłabione zęby, dobierając rozwiązanie do warunków zgryzowych, oczekiwań i możliwości pacjenta.', when:['brak jednego lub kilku zębów','złamane albo znacznie osłabione zęby','potrzeba stabilniejszej protezy'], scope:['korony pełnoceramiczne i porcelanowe','mosty protetyczne','protezy akrylowe i szkieletowe','uzupełnienia kombinowane'], image:'/gallery/galeria-21.jpg'},
+  {slug:'implantologia', title:'Implantologia', kicker:'Trwałe uzupełnianie braków', intro:'Implant zastępuje korzeń utraconego zęba i może stanowić stabilną podstawę korony, mostu lub większej odbudowy protetycznej.', when:['brak pojedynczego zęba','braki kilku zębów','bezzębie lub niestabilna proteza'], scope:['konsultacja i kwalifikacja implantologiczna','planowanie na podstawie CBCT','implantacje nawigowane z użyciem szablonów','korony, mosty i protezy na implantach'], image:'/gallery/galeria-24.jpg'},
+  {slug:'ortodoncja', title:'Ortodoncja', kicker:'Zdrowy zgryz w każdym wieku', intro:'Diagnozujemy i leczymy nieprawidłowe ustawienie zębów oraz wady zgryzu u dzieci, młodzieży i osób dorosłych.', when:['stłoczenia i nierówne zęby','wady zgryzu','problemy z żuciem lub nadmiernym ścieraniem'], scope:['wczesna diagnostyka dzieci','aparaty ruchome wykonywane na podstawie skanu 3D','aparaty stałe','leczenie młodzieży i dorosłych'], image:'/gallery/galeria-26.jpg'},
+  {slug:'stomatologia-estetyczna', title:'Stomatologia estetyczna', kicker:'Naturalna poprawa uśmiechu', intro:'Plan estetyczny dopasowujemy do rysów twarzy, koloru zębów i oczekiwań, zachowując zdrowie jako punkt wyjścia.', when:['przebarwienia zębów','nierówny kształt lub drobne uszkodzenia','chęć poprawy harmonii uśmiechu'], scope:['profesjonalne wybielanie','estetyczne wypełnienia kompozytowe','korony i mosty pełnoceramiczne'], image:'/gallery/galeria-12.jpg'},
+  {slug:'higienizacja', title:'Higienizacja', kicker:'Profilaktyka dopasowana do potrzeb', intro:'Pakiet zabiegów ogranicza osad i kamień, wspiera zdrowie dziąseł oraz pomaga zapobiegać próchnicy i nadwrażliwości.', when:['kamień i osad nazębny','krwawienie dziąseł lub nieświeży oddech','profilaktyka przed lub po leczeniu'], scope:['skaling ultradźwiękowy','piaskowanie i polerowanie','profesjonalna fluoryzacja','instruktaż higieny domowej'], image:'/gallery/galeria-07.jpg'},
+  {slug:'nowoczesne-technologie', title:'Nowoczesne technologie', kicker:'Diagnostyka i precyzja', intro:'Technologia wspiera trafną diagnozę, komfort pacjenta i dokładność leczenia — zawsze jako narzędzie w rękach doświadczonego zespołu.', when:['planowanie złożonego leczenia','leczenie kanałowe','potrzeba dokładnej diagnostyki'], scope:['tomografia komputerowa i radiografia cyfrowa','znieczulenie komputerowe SleeperOne','mikroskop zabiegowy','endometr i nowoczesne urządzenia endodontyczne'], image:'/gallery/galeria-04.jpg'}
+];
 
 export const doctors = [
   ['Grzegorz Ptak','lekarz dentysta, implantolog','Stomatologia zachowawcza, endodoncja, protetyka, chirurgia, implantologia','/ptak/grzegorz.jpg'],
