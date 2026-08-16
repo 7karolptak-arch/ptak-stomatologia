@@ -3,28 +3,53 @@
 import { useState } from 'react';
 import {
   ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Facebook,
-  HeartPulse, Instagram, MapPin, Menu, Microscope, Phone, ShieldCheck,
-  Sparkles, Star, Stethoscope, X
+  HeartPulse, Mail, MapPin, Menu, Microscope, Phone, ScanLine,
+  ShieldCheck, Sparkles, Stethoscope, X
 } from 'lucide-react';
 
 const services = [
-  { n: '01', title: 'Implantologia', text: 'Trwałe uzupełnienie braków zębowych — od diagnostyki po odbudowę uśmiechu.', icon: '◎' },
-  { n: '02', title: 'Stomatologia estetyczna', text: 'Licówki, bonding i wybielanie planowane z poszanowaniem naturalnych rysów.', icon: '✦' },
-  { n: '03', title: 'Leczenie kanałowe', text: 'Precyzyjne leczenie pod mikroskopem, które pozwala ratować własne zęby.', icon: '⌁' },
-  { n: '04', title: 'Ortodoncja', text: 'Aparaty i nakładki dobierane do potrzeb dzieci, młodzieży oraz dorosłych.', icon: '◌' },
-  { n: '05', title: 'Chirurgia', text: 'Bezpieczne zabiegi w komfortowych warunkach i z troskliwą opieką pozabiegową.', icon: '+' },
-  { n: '06', title: 'Higienizacja', text: 'Profesjonalna profilaktyka, która pomaga zachować zdrowy uśmiech na dłużej.', icon: '◇' },
+  { n: '01', title: 'Implantologia', text: 'Trwałe uzupełnienie brakujących zębów z wykorzystaniem implantów i nowoczesnej diagnostyki 3D.', icon: '◎' },
+  { n: '02', title: 'Protetyka', text: 'Korony, mosty, licówki oraz uzupełnienia ruchome przywracające funkcję i estetykę uśmiechu.', icon: '◇' },
+  { n: '03', title: 'Stomatologia zachowawcza', text: 'Leczenie próchnicy i wysokiej klasy wypełnienia estetyczne imitujące naturalne, zdrowe zęby.', icon: '○' },
+  { n: '04', title: 'Stomatologia estetyczna', text: 'Bonding, licówki i wybielanie dla naturalnego, harmonijnego efektu dopasowanego do pacjenta.', icon: '✦' },
+  { n: '05', title: 'Endodoncja mikroskopowa', text: 'Precyzyjne leczenie kanałowe pod mikroskopem, wspierane cyfrową rentgenodiagnostyką.', icon: '⌁' },
+  { n: '06', title: 'Higienizacja', text: 'Skaling, piaskowanie, polerowanie i profilaktyka pomagające zachować zdrowie zębów i dziąseł.', icon: '◌' },
+  { n: '07', title: 'Chirurgia stomatologiczna', text: 'Usuwanie zębów, zabiegi mikrochirurgiczne, plastyka tkanek i procedury regeneracyjne.', icon: '+' },
+  { n: '08', title: 'Ortodoncja', text: 'Diagnostyka i leczenie wad zgryzu u dzieci oraz dorosłych, z wykorzystaniem skanów 3D.', icon: '≈' },
+  { n: '09', title: 'Nowoczesne technologie', text: 'Tomografia CBCT, radiowizjografia, znieczulenie komputerowe oraz cyfrowy skaner wewnątrzustny.', icon: '⌗' },
 ];
 
-const benefits = [
-  ['Wszystko w jednym miejscu', 'Konsultacje, diagnostyka i leczenie prowadzi współpracujący zespół specjalistów.'],
-  ['Komfort bez pośpiechu', 'Rezerwujemy czas na rozmowę, pytania i spokojne przeprowadzenie każdego etapu.'],
-  ['Technologia, która pomaga', 'Skaner wewnątrzustny, tomografia 3D i mikroskop wspierają precyzyjne decyzje.'],
+const doctors = [
+  { name: 'Grzegorz Ptak', role: 'lekarz dentysta, implantolog', scope: 'Stomatologia zachowawcza, endodoncja, protetyka, chirurgia, implantologia', image: '/ptak/grzegorz.jpg' },
+  { name: 'Izabella Dziubek', role: 'lekarz dentysta, ortodoncja', scope: 'Ortodoncja, bonding, stomatologia dziecięca, periodontologia', image: '/ptak/izabella.jpg' },
+  { name: 'Volodymyr Levchuk', role: 'lekarz dentysta, implantolog', scope: 'Stomatologia zachowawcza, implantologia, protetyka', image: '/ptak/volodymyr.jpg' },
+  { name: 'Marcin Kusto', role: 'lekarz dentysta', scope: 'Stomatologia zachowawcza, pedodoncja, chirurgia, protetyka', image: null },
+  { name: 'Aleksandra Surmacz', role: 'lekarz dentysta', scope: 'Stomatologia zachowawcza, endodoncja, chirurgia', image: '/ptak/aleksandra-surmacz.jpg' },
+  { name: 'Bernard Woźniak', role: 'lekarz dentysta', scope: 'Stomatologia zachowawcza, endodoncja mikroskopowa', image: null },
+  { name: 'Anna Kurek', role: 'lekarz dentysta', scope: 'Stomatologia zachowawcza, estetyczna i endodoncja', image: '/ptak/anna.jpg' },
+  { name: 'Aleksandra Kubicka', role: 'lekarz dentysta', scope: 'Stomatologia zachowawcza dorosłych i dzieci, endodoncja', image: '/ptak/aleksandra-kubicka.jpeg' },
+];
+
+const support = [
+  ['Umida Radjapova-Galushka', 'dyplomowana higienistka stomatologiczna'],
+  ['Weronika Warchał', 'dyplomowana higienistka stomatologiczna'],
+  ['Joanna Zając', 'dyplomowana asystentka stomatologiczna'],
+  ['Martyna Śliwa', 'dyplomowana asystentka stomatologiczna'],
+  ['Ewelina Wiech', 'dyplomowana asystentka stomatologiczna'],
+  ['Klaudia Smajek', 'rejestratorka medyczna'],
+  ['Małgorzata Ptak', 'menadżer gabinetu'],
+];
+
+const priceGroups = [
+  { title: 'Konsultacje i leczenie', rows: [['Konsultacja / badanie', '100–300 zł'], ['Wypełnienie zęba stałego', '350–450 zł'], ['Bonding / licówka kompozytowa', '600–700 zł'], ['Znieczulenie komputerowe', '70 zł']] },
+  { title: 'Chirurgia i implantologia', rows: [['Usunięcie zęba', '350–450 zł'], ['Usunięcie zęba mądrości', '400–500 zł'], ['Wszczepienie implantu', 'od 2 900 zł'], ['Korona na implancie', 'od 2 500 zł']] },
+  { title: 'Profilaktyka i estetyka', rows: [['Kamień + piaskowanie', '340–390 zł'], ['Pakiet z lakierowaniem', '360–400 zł'], ['Wybielanie nakładkowe', '950 zł'], ['Wybielanie zęba martwego', '450 zł']] },
 ];
 
 export default function Home() {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [pricesOpen, setPricesOpen] = useState(false);
 
   const go = (id) => {
     setOpen(false);
@@ -35,73 +60,73 @@ export default function Home() {
     <main>
       <div className="topbar">
         <div className="shell topbar-inner">
-          <span><Clock3 size={14}/> Pon–Pt 8:00–20:00</span>
-          <span><MapPin size={14}/> ul. Jasna 14, Warszawa</span>
-          <a href="tel:+48221234567"><Phone size={14}/> +48 22 123 45 67</a>
+          <span><Clock3 size={14}/> Pon–Pt 9:00–20:00</span>
+          <span><MapPin size={14}/> ul. Ady Sari 38, Wadowice</span>
+          <a href="tel:+48664065582"><Phone size={14}/> 664 06 55 82</a>
         </div>
       </div>
 
       <header className="nav-wrap">
         <div className="shell nav">
           <button className="brand" onClick={() => go('#start')} aria-label="Przejdź na początek">
-            <span className="brand-mark"><span>N</span></span>
-            <span className="brand-copy"><b>NOVA</b><small>DENTAL CLINIC</small></span>
+            <span className="brand-mark bird-mark"><span>P</span></span>
+            <span className="brand-copy"><b>PTAK</b><small>STOMATOLOGIA</small></span>
           </button>
           <nav className={open ? 'nav-links open' : 'nav-links'} aria-label="Główna nawigacja">
-            <button onClick={() => go('#uslugi')}>Usługi <ChevronDown size={14}/></button>
+            <button onClick={() => go('#uslugi')}>Oferta <ChevronDown size={14}/></button>
             <button onClick={() => go('#o-nas')}>O nas</button>
-            <button onClick={() => go('#dlaczego')}>Dlaczego my</button>
-            <button onClick={() => go('#opinie')}>Opinie</button>
+            <button onClick={() => go('#zespol')}>Zespół</button>
+            <button onClick={() => go('#rtg')}>Pracownia RTG</button>
+            <button onClick={() => go('#cennik')}>Cennik</button>
             <button onClick={() => go('#kontakt')}>Kontakt</button>
           </nav>
           <div className="nav-actions">
-            <a className="social" href="#kontakt" aria-label="Instagram"><Instagram size={18}/></a>
-            <a className="social" href="#kontakt" aria-label="Facebook"><Facebook size={18}/></a>
+            <a className="social" href="https://www.facebook.com/ptakstomatologia" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={18}/></a>
             <button className="nav-cta" onClick={() => go('#kontakt')}>Umów wizytę <ArrowRight size={17}/></button>
           </div>
           <button className="menu" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X/> : <Menu/>}</button>
         </div>
       </header>
 
-      <section className="hero" id="start">
+      <section className="hero ptak-hero" id="start">
         <div className="hero-bg" />
         <div className="shell hero-grid">
-          <div className="hero-copy reveal">
-            <p className="eyebrow light"><span/> KLINIKA STOMATOLOGICZNA</p>
-            <h1>Zdrowy uśmiech.<br/><em>Spokojna głowa.</em></h1>
-            <p className="hero-lead">Kompleksowe leczenie stomatologiczne w miejscu, w którym nowoczesna technologia spotyka się z prawdziwą troską.</p>
+          <div className="hero-copy">
+            <p className="eyebrow light"><span/> GABINET STOMATOLOGICZNY W WADOWICACH</p>
+            <h1>Skuteczne leczenie.<br/><em>Na lata.</em></h1>
+            <p className="hero-lead">Wysoka jakość świadczonych usług, nowoczesna diagnostyka i indywidualne podejście do każdego pacjenta.</p>
             <div className="hero-buttons">
-              <button className="btn primary" onClick={() => go('#kontakt')}>Umów konsultację <ArrowRight size={18}/></button>
-              <button className="btn ghost" onClick={() => go('#uslugi')}>Poznaj usługi</button>
+              <a className="btn primary" href="tel:+48664065582">Zadzwoń i umów wizytę <Phone size={18}/></a>
+              <button className="btn ghost" onClick={() => go('#uslugi')}>Poznaj ofertę</button>
             </div>
           </div>
           <div className="hero-card">
-            <p>Nie wiesz, od czego zacząć?</p>
-            <h3>Porozmawiajmy o Twoim uśmiechu.</h3>
-            <a href="tel:+48221234567"><Phone size={18}/> +48 22 123 45 67</a>
-            <small>Oddzwonimy lub znajdziemy dogodny termin.</small>
+            <p>Rezerwacja terminów</p>
+            <h3>Osobiście lub telefonicznie.</h3>
+            <a href="tel:+48664065582"><Phone size={18}/> 664 06 55 82</a>
+            <small>ul. Ady Sari 38, 34-100 Wadowice</small>
           </div>
         </div>
         <div className="hero-stats shell">
-          <div><b>4.9</b><span><span className="stars">★★★★★</span> 340+ opinii</span></div>
-          <div><b>12</b><span>doświadczonych<br/>specjalistów</span></div>
-          <div><b>9 lat</b><span>troski o zdrowe<br/>uśmiechy</span></div>
+          <div><b>2021</b><span>nowa siedziba<br/>Ptak Stomatologia</span></div>
+          <div><b>3</b><span>klimatyzowane<br/>gabinety</span></div>
+          <div><b>CBCT</b><span>diagnostyka 3D<br/>na miejscu</span></div>
         </div>
       </section>
 
       <section className="intro section" id="o-nas">
         <div className="shell intro-grid">
           <div className="photo-stack">
-            <img className="photo-main" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=88" alt="Nowoczesny gabinet stomatologiczny"/>
-            <div className="photo-note"><Sparkles size={25}/><b>Twój komfort<br/>jest częścią leczenia</b></div>
+            <img className="photo-main" src="/ptak/reception.jpg" alt="Recepcja Ptak Stomatologia w Wadowicach"/>
+            <div className="photo-note"><Sparkles size={25}/><b>Komfortowe miejsce<br/>i przyjazna atmosfera</b></div>
           </div>
           <div className="intro-copy">
-            <p className="eyebrow"><span/> POZNAJ NOVA DENTAL</p>
-            <h2>Stomatologia, której możesz <em>zaufać</em></h2>
-            <p>Tworzymy klinikę, do której wchodzi się bez napięcia. Zaczynamy od uważnej rozmowy, przedstawiamy jasny plan i prowadzimy Cię przez cały proces krok po kroku.</p>
-            <p>Nasz zespół łączy wiedzę z różnych dziedzin, dlatego nawet złożone leczenie może odbywać się w jednym, dobrze znanym miejscu.</p>
-            <div className="signature-row"><span className="signature">dr Anna Nowak</span><small>Dyrektor medyczna<br/>Nova Dental</small></div>
-            <button className="text-link" onClick={() => go('#dlaczego')}>Poznaj naszą filozofię <ArrowRight size={18}/></button>
+            <p className="eyebrow"><span/> PTAK STOMATOLOGIA</p>
+            <h2>Jakość i skuteczność<br/><em>bez kompromisów</em></h2>
+            <p>Myślą przewodnią gabinetu jest wysoka jakość świadczonych usług i skuteczność leczenia. Chcemy, aby efekt solidnie wykonanego zabiegu zachował się jak najdłużej.</p>
+            <p>Każdy pacjent traktowany jest indywidualnie. Lekarz przedstawia najlepszy plan leczenia i pomaga podjąć świadome decyzje dotyczące rozwiązań terapeutycznych oraz finansowych.</p>
+            <div className="signature-row"><span className="signature">Grzegorz Ptak</span><small>lekarz dentysta, implantolog<br/>założyciel gabinetu</small></div>
+            <button className="text-link" onClick={() => go('#zespol')}>Poznaj nasz zespół <ArrowRight size={18}/></button>
           </div>
         </div>
       </section>
@@ -109,8 +134,8 @@ export default function Home() {
       <section className="services section" id="uslugi">
         <div className="shell">
           <div className="section-head split">
-            <div><p className="eyebrow"><span/> JAK MOŻEMY CI POMÓC</p><h2>Kompleksowa opieka.<br/><em>Jeden zespół.</em></h2></div>
-            <p>Od profilaktyki po pełne metamorfozy uśmiechu. Plan leczenia dobieramy indywidualnie — bez schematów i zbędnego pośpiechu.</p>
+            <div><p className="eyebrow"><span/> PEŁNA OFERTA</p><h2>Kompleksowe leczenie.<br/><em>W jednym miejscu.</em></h2></div>
+            <p>Nowoczesny sprzęt i wysokiej jakości materiały pozwalają prowadzić leczenie z zakresu implantologii, chirurgii, ortodoncji, endodoncji, protetyki i stomatologii zachowawczej.</p>
           </div>
           <div className="service-grid">
             {services.map((s) => <article className="service-card" key={s.n}>
@@ -121,52 +146,98 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="why section" id="dlaczego">
+      <section className="why section" id="rtg">
         <div className="shell why-grid">
           <div className="why-copy">
-            <p className="eyebrow light"><span/> DLACZEGO NOVA DENTAL</p>
-            <h2>Nowoczesność,<br/><em>która daje spokój</em></h2>
+            <p className="eyebrow light"><span/> PRACOWNIA RTG</p>
+            <h2>Precyzyjna diagnoza.<br/><em>Niska dawka.</em></h2>
+            <p className="why-lead">Na miejscu wykonujemy cyfrową diagnostykę niezbędną do planowania i kontroli leczenia.</p>
             <div className="benefit-list">
-              {benefits.map((b, i) => <div className="benefit" key={b[0]}><span>0{i+1}</span><div><h3>{b[0]}</h3><p>{b[1]}</p></div></div>)}
+              <div className="benefit"><span>01</span><div><h3>Tomografia komputerowa CBCT</h3><p>Trójwymiarowy obraz struktur kostnych wspierający implantologię, chirurgię i endodoncję.</p></div></div>
+              <div className="benefit"><span>02</span><div><h3>Pantomografia i cefalometria</h3><p>Cyfrowe zdjęcia całego uzębienia oraz diagnostyka potrzebna w leczeniu ortodontycznym.</p></div></div>
+              <div className="benefit"><span>03</span><div><h3>Radiowizjografia cyfrowa</h3><p>Obraz dostępny w kilka sekund, wykonywany bezpośrednio przy fotelu stomatologicznym.</p></div></div>
             </div>
           </div>
           <div className="why-visual">
-            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=88" alt="Stomatolog podczas konsultacji"/>
-            <div className="floating-badge"><ShieldCheck/><b>Bezpiecznie.<br/>Przejrzyście.<br/>Po Twojemu.</b></div>
+            <img src="/ptak/hero-2.jpg" alt="Nowoczesny gabinet Ptak Stomatologia"/>
+            <div className="floating-badge"><ScanLine/><b>Smart Plus Vatech<br/>obrazowanie cyfrowe<br/>na miejscu</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="team section" id="zespol">
+        <div className="shell">
+          <div className="section-head split">
+            <div><p className="eyebrow"><span/> NASZ ZESPÓŁ</p><h2>Doświadczenie wielu dziedzin.<br/><em>Jedna opieka.</em></h2></div>
+            <p>Zespół lekarzy, higienistek, asystentek i rejestracji dba o precyzję leczenia oraz komfort pacjenta na każdym etapie wizyty.</p>
+          </div>
+          <div className="team-grid">
+            {doctors.map((person) => <article className="person-card" key={person.name}>
+              <div className={`person-photo ${!person.image ? 'person-placeholder' : ''}`}>
+                {person.image ? <img src={person.image} alt={person.name}/> : <span>{person.name.split(' ').map(x=>x[0]).join('')}</span>}
+              </div>
+              <div className="person-copy"><h3>{person.name}</h3><p>{person.role}</p><small>{person.scope}</small></div>
+            </article>)}
+          </div>
+          <div className="support-team">
+            <p className="eyebrow"><span/> ZESPÓŁ WSPARCIA</p>
+            <div>{support.map(([name, role]) => <span key={name}><b>{name}</b><small>{role}</small></span>)}</div>
           </div>
         </div>
       </section>
 
       <section className="process section">
         <div className="shell">
-          <div className="section-head centered"><p className="eyebrow"><span/> PIERWSZA WIZYTA</p><h2>Dobry plan zaczyna się<br/>od <em>dobrej rozmowy</em></h2></div>
+          <div className="section-head centered"><p className="eyebrow"><span/> JAK PRACUJEMY</p><h2>Indywidualny plan.<br/><em>Świadome decyzje.</em></h2></div>
           <div className="steps">
-            <div><span><CalendarDays/></span><small>KROK 01</small><h3>Konsultacja</h3><p>Rozmawiamy o Twoich potrzebach, obawach i oczekiwaniach.</p></div>
-            <div><span><Microscope/></span><small>KROK 02</small><h3>Diagnostyka</h3><p>Wykonujemy potrzebne badania i pokazujemy Ci pełny obraz sytuacji.</p></div>
-            <div><span><Stethoscope/></span><small>KROK 03</small><h3>Plan leczenia</h3><p>Otrzymujesz czytelne etapy, koszty i możliwe warianty terapii.</p></div>
-            <div><span><HeartPulse/></span><small>KROK 04</small><h3>Opieka</h3><p>Prowadzimy leczenie w Twoim tempie i pozostajemy w kontakcie.</p></div>
+            <div><span><CalendarDays/></span><small>KROK 01</small><h3>Konsultacja</h3><p>Poznajemy potrzeby pacjenta i wykonujemy badanie wewnątrzustne.</p></div>
+            <div><span><Microscope/></span><small>KROK 02</small><h3>Diagnostyka</h3><p>W razie potrzeby wykonujemy RTG, pantomografię lub tomografię CBCT.</p></div>
+            <div><span><Stethoscope/></span><small>KROK 03</small><h3>Plan leczenia</h3><p>Omawiamy dostępne rozwiązania terapeutyczne i finansowe.</p></div>
+            <div><span><HeartPulse/></span><small>KROK 04</small><h3>Leczenie</h3><p>Realizujemy uzgodniony plan z naciskiem na komfort i trwały efekt.</p></div>
           </div>
         </div>
       </section>
 
-      <section className="reviews section" id="opinie">
-        <div className="shell reviews-grid">
-          <div className="reviews-intro"><p className="eyebrow light"><span/> GŁOS NASZYCH PACJENTÓW</p><h2>Najbardziej cieszy nas<br/><em>Wasz spokój</em></h2><p>Każda opinia przypomina nam, że dobre leczenie to nie tylko efekt, ale też całe doświadczenie po drodze.</p><div className="rating"><b>4.9</b><span><span className="stars">★★★★★</span><small>na podstawie 340+ opinii</small></span></div></div>
-          <blockquote><Star className="quote-star" fill="currentColor"/><p>„Od pierwszej rozmowy czułam, że jestem w dobrych rękach. Wszystko zostało wyjaśnione spokojnie i zrozumiale, a efekt przerósł moje oczekiwania.”</p><footer><span>MK</span><div><b>Magdalena K.</b><small>Pacjentka Nova Dental</small></div></footer></blockquote>
+      <section className="pricing section" id="cennik">
+        <div className="shell">
+          <div className="section-head split">
+            <div><p className="eyebrow light"><span/> CENNIK OD 02.2026</p><h2>Jasne zasady.<br/><em>Przejrzyste ceny.</em></h2></div>
+            <p>Ostateczny koszt zależy od indywidualnej sytuacji klinicznej i jest omawiany z pacjentem po konsultacji.</p>
+          </div>
+          <div className="price-grid">
+            {priceGroups.map((group) => <div className="price-card" key={group.title}><h3>{group.title}</h3>{group.rows.map(([name, price]) => <div className="price-row" key={name}><span>{name}</span><b>{price}</b></div>)}</div>)}
+          </div>
+          {pricesOpen && <div className="price-more"><p>Pełny cennik obejmuje także endodoncję mikroskopową, ortodoncję, stomatologię dziecięcą, protetykę, periodontologię oraz diagnostykę RTG.</p><a href="https://ptakstomatologia.pl/cennik/" target="_blank" rel="noreferrer">Zobacz pełny wykaz aktualnych cen <ArrowRight size={17}/></a></div>}
+          <button className="btn outline-dark" onClick={() => setPricesOpen(!pricesOpen)}>{pricesOpen ? 'Zwiń szczegóły' : 'Więcej o cenniku'} <ChevronDown size={17}/></button>
         </div>
+      </section>
+
+      <section className="gallery-band">
+        <div className="gallery-cell"><img src="/ptak/hero-1.jpg" alt="Wnętrze gabinetu Ptak Stomatologia"/></div>
+        <div className="gallery-cell wide"><img src="/ptak/clinic-team.jpg" alt="Zespół Ptak Stomatologia"/></div>
+        <div className="gallery-cell"><img src="/ptak/hero-3.jpg" alt="Wyposażenie gabinetu Ptak Stomatologia"/></div>
       </section>
 
       <section className="contact section" id="kontakt">
         <div className="shell contact-card">
           <div className="contact-copy">
-            <p className="eyebrow light"><span/> ZRÓB PIERWSZY KROK</p>
-            <h2>Porozmawiajmy<br/>o Twoim <em>uśmiechu</em></h2>
-            <p>Zostaw numer telefonu. Nasza koordynatorka oddzwoni, odpowie na pytania i zaproponuje dogodny termin konsultacji.</p>
-            <div className="contact-meta"><a href="tel:+48221234567"><Phone/> <span><small>Zadzwoń</small><b>+48 22 123 45 67</b></span></a><span><MapPin/> <span><small>Odwiedź nas</small><b>ul. Jasna 14, Warszawa</b></span></span></div>
+            <p className="eyebrow light"><span/> REJESTRACJA</p>
+            <h2>Umów swoją<br/><em>wizytę</em></h2>
+            <p>Rezerwacja terminów odbywa się osobiście lub telefonicznie. Zapraszamy do gabinetu w spokojnej części Wadowic — na miejscu dostępny jest duży parking.</p>
+            <div className="contact-meta">
+              <a href="tel:+48664065582"><Phone/> <span><small>Telefon</small><b>664 06 55 82</b></span></a>
+              <a href="mailto:rejestracja@ptakstomatologia.pl"><Mail/> <span><small>E-mail</small><b>rejestracja@ptakstomatologia.pl</b></span></a>
+              <span><MapPin/> <span><small>Adres</small><b>ul. Ady Sari 38, 34-100 Wadowice</b></span></span>
+            </div>
           </div>
           <form onSubmit={(e) => {e.preventDefault(); setSent(true)}}>
-            {sent ? <div className="success"><span><Check/></span><h3>Dziękujemy!</h3><p>To wersja demonstracyjna — formularz działa wizualnie i jest gotowy do podłączenia do systemu kliniki.</p><button type="button" className="btn primary" onClick={() => setSent(false)}>Wróć do formularza</button></div> : <>
-              <h3>Umów konsultację</h3><label>Imię i nazwisko<input required placeholder="Jan Kowalski"/></label><label>Numer telefonu<input required type="tel" placeholder="+48 000 000 000"/></label><label>W czym możemy pomóc?<select defaultValue=""><option value="" disabled>Wybierz temat</option><option>Implantologia</option><option>Stomatologia estetyczna</option><option>Leczenie kanałowe</option><option>Ortodoncja</option><option>Inne</option></select></label><label className="consent"><input type="checkbox" required/> <span>Wyrażam zgodę na kontakt telefoniczny w sprawie konsultacji.</span></label><button className="btn primary" type="submit">Proszę o kontakt <ArrowRight size={18}/></button>
+            {sent ? <div className="success"><span><Check/></span><h3>Dziękujemy!</h3><p>Formularz demonstracyjny jest gotowy do podłączenia do skrzynki rejestracji. Obecnie wizyty można rezerwować pod numerem 664 06 55 82.</p><button type="button" className="btn primary" onClick={() => setSent(false)}>Wróć do formularza</button></div> : <>
+              <h3>Poproś o kontakt</h3>
+              <label>Imię i nazwisko<input required placeholder="Jan Kowalski"/></label>
+              <label>Numer telefonu<input required type="tel" placeholder="+48 000 000 000"/></label>
+              <label>W czym możemy pomóc?<select defaultValue=""><option value="" disabled>Wybierz temat</option>{services.map(s=><option key={s.title}>{s.title}</option>)}</select></label>
+              <label className="consent"><input type="checkbox" required/> <span>Wyrażam zgodę na kontakt telefoniczny w sprawie konsultacji.</span></label>
+              <button className="btn primary" type="submit">Proszę o kontakt <ArrowRight size={18}/></button>
             </>}
           </form>
         </div>
@@ -174,12 +245,12 @@ export default function Home() {
 
       <footer>
         <div className="shell footer-main">
-          <div><div className="brand footer-brand"><span className="brand-mark"><span>N</span></span><span className="brand-copy"><b>NOVA</b><small>DENTAL CLINIC</small></span></div><p>Zdrowy uśmiech. Spokojna głowa.</p></div>
-          <div><b>Nawigacja</b><a href="#uslugi">Usługi</a><a href="#o-nas">O nas</a><a href="#dlaczego">Dlaczego my</a></div>
-          <div><b>Kontakt</b><a href="tel:+48221234567">+48 22 123 45 67</a><a href="mailto:kontakt@novadental.pl">kontakt@novadental.pl</a><span>ul. Jasna 14, Warszawa</span></div>
-          <div><b>Godziny</b><span>Pon–Pt: 8:00–20:00</span><span>Sob: 9:00–14:00</span><div className="footer-social"><a href="#"><Instagram/></a><a href="#"><Facebook/></a></div></div>
+          <div><div className="brand footer-brand"><span className="brand-mark bird-mark"><span>P</span></span><span className="brand-copy"><b>PTAK</b><small>STOMATOLOGIA</small></span></div><p>Wysoka jakość usług i skuteczność leczenia.</p></div>
+          <div><b>Nawigacja</b><a href="#uslugi">Oferta</a><a href="#zespol">Zespół</a><a href="#rtg">Pracownia RTG</a><a href="#cennik">Cennik</a></div>
+          <div><b>Kontakt</b><a href="tel:+48664065582">664 06 55 82</a><a href="mailto:rejestracja@ptakstomatologia.pl">rejestracja@ptakstomatologia.pl</a><span>ul. Ady Sari 38<br/>34-100 Wadowice</span></div>
+          <div><b>Godziny</b><span>Pon–Pt: 9:00–20:00</span><span>Sobota: po uzgodnieniu</span><div className="footer-social"><a href="https://www.facebook.com/ptakstomatologia" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook/></a></div></div>
         </div>
-        <div className="shell footer-bottom"><span>© 2026 Nova Dental. Wszelkie prawa zastrzeżone.</span><span>Polityka prywatności &nbsp; • &nbsp; Cookies</span></div>
+        <div className="shell footer-bottom"><span>© 2026 PTAK STOMATOLOGIA sp. z o.o.</span><span>NIP 5512657728 &nbsp; • &nbsp; REGON 523848403</span></div>
       </footer>
     </main>
   );

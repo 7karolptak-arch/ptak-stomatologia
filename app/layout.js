@@ -6,8 +6,8 @@ export async function generateMetadata() {
   const host = requestHeaders.get('x-forwarded-host') || requestHeaders.get('host') || 'localhost:3000';
   const protocol = requestHeaders.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
   const image = `${protocol}://${host}/og.png`;
-  const title = 'Nova Dental — klinika stomatologiczna';
-  const description = 'Nowoczesne, spokojne i kompleksowe leczenie stomatologiczne w jednym miejscu.';
+  const title = 'Ptak Stomatologia — gabinet stomatologiczny w Wadowicach';
+  const description = 'Kompleksowe leczenie stomatologiczne, implantologia, ortodoncja i diagnostyka RTG w Wadowicach.';
 
   return {
     title,
