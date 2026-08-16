@@ -5,7 +5,7 @@ export const services = [
   ['04','Stomatologia estetyczna','stomatologia-estetyczna','Wybielanie i estetyczne odbudowy dla harmonijnego efektu dopasowanego do pacjenta.','✦'],
   ['05','Endodoncja mikroskopowa','endodoncja-mikroskopowa','Precyzyjne leczenie kanałowe pod mikroskopem, wspierane diagnostyką cyfrową.','⌁'],
   ['06','Higienizacja','higienizacja','Skaling, piaskowanie i fluoryzacja pomagające zachować zdrowie zębów i dziąseł.','◌'],
-  ['07','Chirurgia stomatologiczna','chirurgia-stomatologiczna','Usuwanie zębów, zabiegi mikrochirurgiczne i procedury na tkankach jamy ustnej.','+'],
+  ['07','Chirurgia stomatologiczna','chirurgia','Usuwanie zębów, zabiegi mikrochirurgiczne i procedury na tkankach jamy ustnej.','+'],
   ['08','Ortodoncja','ortodoncja','Diagnostyka i leczenie wad zgryzu u dzieci, młodzieży oraz dorosłych.','≈']
 ].map(([n,title,slug,text,icon])=>({n,title,slug,text,icon}));
 
