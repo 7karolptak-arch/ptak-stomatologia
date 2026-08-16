@@ -1,16 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, CalendarDays, Check, ChevronDown, HeartPulse, Mail, MapPin, Microscope, Phone, Sparkles, Stethoscope } from 'lucide-react';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
+import Gallery from './components/Gallery';
 import { services } from './data';
 
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
   const [sent, setSent] = useState(false);
+  const [slide, setSlide] = useState(0);
+  const heroPhotos=['/gallery/galeria-01.jpg','/gallery/galeria-13.jpg','/gallery/galeria-03.jpg','/gallery/galeria-28.jpg'];
+  useEffect(()=>{const timer=setInterval(()=>setSlide(s=>(s+1)%heroPhotos.length),6500);return()=>clearInterval(timer)},[]);
   return <main><SiteHeader/>
-    <section className="hero" id="start"><div className="hero-bg"/><div className="shell hero-grid"><div className="hero-copy">
+    <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((src,i)=><div key={src} className={`hero-bg ${slide===i?'active':''}`} style={{backgroundImage:`url(${src})`}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
       <p className="eyebrow light"><span/> GABINET STOMATOLOGICZNY W WADOWICACH</p><h1>Skuteczne leczenie.<br/><em>Na lata.</em></h1>
       <p className="hero-lead">Wysoka jakość świadczonych usług, nowoczesna diagnostyka i indywidualne podejście do każdego pacjenta.</p>
       <div className="hero-buttons"><a className="btn primary" href="tel:+48664065582">Zadzwoń i umów wizytę <Phone size={18}/></a><a className="btn ghost" href="#uslugi">Poznaj ofertę</a></div>
@@ -34,7 +38,7 @@ export default function Home() {
 
     <section className="page-links"><div className="shell page-links-grid"><a href="/zespol"><small>POZNAJ SPECJALISTÓW</small><h2>Nasz zespół</h2><span>Zobacz zespół <ArrowRight/></span></a><a href="/cennik"><small>PRZEJRZYSTE ZASADY</small><h2>Cennik</h2><span>Sprawdź ceny <ArrowRight/></span></a></div></section>
 
-    <section className="gallery-band"><div><img src="/ptak/hero-1.jpg" alt="Wnętrze gabinetu"/></div><div className="wide"><img src="/ptak/clinic-team.jpg" alt="Zespół Ptak Stomatologia"/></div><div><img src="/ptak/hero-3.jpg" alt="Wyposażenie gabinetu"/></div></section>
+    <Gallery/>
 
     <section className="contact section" id="kontakt"><div className="shell contact-card"><div className="contact-copy"><p className="eyebrow light"><span/> REJESTRACJA</p><h2>Umów swoją<br/><em>wizytę</em></h2><p>Rezerwacja terminów odbywa się osobiście lub telefonicznie. Zapraszamy do gabinetu w spokojnej części Wadowic.</p><div className="contact-meta"><a href="tel:+48664065582"><Phone/><span><small>Telefon</small><b>664 06 55 82</b></span></a><a href="mailto:rejestracja@ptakstomatologia.pl"><Mail/><span><small>E-mail</small><b>rejestracja@ptakstomatologia.pl</b></span></a><span><MapPin/><span><small>Adres</small><b>ul. Ady Sari 38, 34-100 Wadowice</b></span></span></div></div>
       <form onSubmit={e=>{e.preventDefault();setSent(true)}}>{sent?<div className="success"><span><Check/></span><h3>Dziękujemy!</h3><p>Formularz demonstracyjny jest gotowy do podłączenia. Obecnie wizyty można rezerwować pod numerem 664 06 55 82.</p><button type="button" className="btn primary" onClick={()=>setSent(false)}>Wróć</button></div>:<><h3>Poproś o kontakt</h3><label>Imię i nazwisko<input required placeholder="Jan Kowalski"/></label><label>Numer telefonu<input required type="tel" placeholder="+48 000 000 000"/></label><label>W czym możemy pomóc?<select defaultValue=""><option value="" disabled>Wybierz temat</option>{services.map(s=><option key={s.title}>{s.title}</option>)}</select></label><label className="consent"><input type="checkbox" required/><span>Wyrażam zgodę na kontakt telefoniczny w sprawie konsultacji.</span></label><button className="btn primary" type="submit">Proszę o kontakt <ArrowRight size={18}/></button></>}</form>
