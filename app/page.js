@@ -5,6 +5,7 @@ import { ArrowRight, CalendarDays, Check, ChevronDown, HeartPulse, Mail, MapPin,
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import Gallery from './components/Gallery';
+import GoogleReviews from './components/GoogleReviews';
 import { services } from './data';
 
 export default function Home() {
@@ -16,10 +17,10 @@ export default function Home() {
   return <main><SiteHeader/>
     <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((src,i)=><div key={src} className={`hero-bg ${slide===i?'active':''}`} style={{backgroundImage:`url(${src})`}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
       <p className="eyebrow light"><span/> GABINET STOMATOLOGICZNY W WADOWICACH</p><h1>Skuteczne leczenie.<br/><em>Na lata.</em></h1>
-      <p className="hero-lead">Wysoka jakość świadczonych usług, nowoczesna diagnostyka i indywidualne podejście do każdego pacjenta.</p>
+      <p className="hero-lead">Kompleksowa stomatologia w Wadowicach — od konsultacji i diagnostyki po odbudowę zdrowego, naturalnego uśmiechu.</p>
       <div className="hero-buttons"><a className="btn primary" href="tel:+48664065582">Zadzwoń i umów wizytę <Phone size={18}/></a><a className="btn ghost" href="#uslugi">Poznaj ofertę</a></div>
     </div><div className="hero-card"><p>Rezerwacja terminów</p><h3>Osobiście lub telefonicznie.</h3><a href="tel:+48664065582"><Phone size={18}/> 664 06 55 82</a><small>ul. Ady Sari 38, 34-100 Wadowice</small></div></div>
-    <div className="hero-stats shell"><div><b>2021</b><span>nowa siedziba<br/>Ptak Stomatologia</span></div><div><b>3</b><span>komfortowe<br/>gabinety</span></div><div><b>Wadowice</b><span>opieka blisko<br/>Twojego domu</span></div></div></section>
+    <div className="hero-stats shell"><div><b>4,8</b><span>średnia z 98<br/>opinii Google</span></div><div><b>8</b><span>lekarzy różnych<br/>specjalizacji</span></div><div><b>3</b><span>komfortowe<br/>gabinety</span></div></div></section>
 
     <section className="intro section" id="o-nas"><div className="shell intro-grid"><div className="photo-stack"><img className="photo-main" src="/ptak/reception.jpg" alt="Recepcja Ptak Stomatologia w Wadowicach"/><div className="photo-note"><Sparkles size={25}/><b>Komfortowe miejsce<br/>i przyjazna atmosfera</b></div></div><div className="intro-copy">
       <p className="eyebrow"><span/> STOMATOLOG WADOWICE</p><h2>Poznaj nas.<br/><em>Ptak Stomatologia.</em></h2>
@@ -36,11 +37,13 @@ export default function Home() {
       <div><span><CalendarDays/></span><small>KROK 01</small><h3>Konsultacja</h3><p>Poznajemy potrzeby pacjenta i wykonujemy badanie.</p></div><div><span><Microscope/></span><small>KROK 02</small><h3>Diagnostyka</h3><p>Dobieramy badania potrzebne do bezpiecznego planowania.</p></div><div><span><Stethoscope/></span><small>KROK 03</small><h3>Plan leczenia</h3><p>Omawiamy rozwiązania terapeutyczne i finansowe.</p></div><div><span><HeartPulse/></span><small>KROK 04</small><h3>Leczenie</h3><p>Realizujemy uzgodniony plan z troską o komfort.</p></div>
     </div></div></section>
 
+    <GoogleReviews/>
+
     <section className="page-links"><div className="shell page-links-grid"><a href="/zespol"><small>POZNAJ SPECJALISTÓW</small><h2>Nasz zespół</h2><span>Zobacz zespół <ArrowRight/></span></a><a href="/cennik"><small>PRZEJRZYSTE ZASADY</small><h2>Cennik</h2><span>Sprawdź ceny <ArrowRight/></span></a></div></section>
 
     <Gallery/>
 
     <section className="contact section" id="kontakt"><div className="shell contact-card"><div className="contact-copy"><p className="eyebrow light"><span/> REJESTRACJA</p><h2>Umów swoją<br/><em>wizytę</em></h2><p>Rezerwacja terminów odbywa się osobiście lub telefonicznie. Zapraszamy do gabinetu w spokojnej części Wadowic.</p><div className="contact-meta"><a href="tel:+48664065582"><Phone/><span><small>Telefon</small><b>664 06 55 82</b></span></a><a href="mailto:rejestracja@ptakstomatologia.pl"><Mail/><span><small>E-mail</small><b>rejestracja@ptakstomatologia.pl</b></span></a><span><MapPin/><span><small>Adres</small><b>ul. Ady Sari 38, 34-100 Wadowice</b></span></span></div></div>
-      <form onSubmit={e=>{e.preventDefault();setSent(true)}}>{sent?<div className="success"><span><Check/></span><h3>Dziękujemy!</h3><p>Formularz demonstracyjny jest gotowy do podłączenia. Obecnie wizyty można rezerwować pod numerem 664 06 55 82.</p><button type="button" className="btn primary" onClick={()=>setSent(false)}>Wróć</button></div>:<><h3>Poproś o kontakt</h3><label>Imię i nazwisko<input required placeholder="Jan Kowalski"/></label><label>Numer telefonu<input required type="tel" placeholder="+48 000 000 000"/></label><label>W czym możemy pomóc?<select defaultValue=""><option value="" disabled>Wybierz temat</option>{services.map(s=><option key={s.title}>{s.title}</option>)}</select></label><label className="consent"><input type="checkbox" required/><span>Wyrażam zgodę na kontakt telefoniczny w sprawie konsultacji.</span></label><button className="btn primary" type="submit">Proszę o kontakt <ArrowRight size={18}/></button></>}</form>
+      <form onSubmit={e=>{e.preventDefault();const f=new FormData(e.currentTarget);const subject=encodeURIComponent('Prośba o kontakt — '+f.get('name'));const body=encodeURIComponent(`Imię i nazwisko: ${f.get('name')}\nTelefon: ${f.get('phone')}\nTemat: ${f.get('topic')}\n\nProszę o kontakt w sprawie konsultacji.`);window.location.href=`mailto:rejestracja@ptakstomatologia.pl?subject=${subject}&body=${body}`;setSent(true)}}>{sent?<div className="success"><span><Check/></span><h3>Wiadomość jest gotowa</h3><p>Otworzyliśmy Twój program pocztowy z uzupełnioną wiadomością do rejestracji. Sprawdź treść i naciśnij „Wyślij”.</p><button type="button" className="btn primary" onClick={()=>setSent(false)}>Wróć do formularza</button></div>:<><h3>Napisz do rejestracji</h3><label>Imię i nazwisko<input name="name" required placeholder="Jan Kowalski"/></label><label>Numer telefonu<input name="phone" required type="tel" placeholder="+48 000 000 000"/></label><label>W czym możemy pomóc?<select name="topic" defaultValue=""><option value="" disabled>Wybierz temat</option>{services.map(s=><option key={s.title}>{s.title}</option>)}</select></label><label className="consent"><input type="checkbox" required/><span>Wyrażam zgodę na przekazanie danych do rejestracji w celu kontaktu.</span></label><button className="btn primary" type="submit">Otwórz wiadomość e-mail <ArrowRight size={18}/></button><small className="form-note">Po kliknięciu otworzy się Twój program pocztowy. Wiadomość zostanie wysłana dopiero po Twoim potwierdzeniu.</small></>}</form>
     </div></section><SiteFooter/></main>;
 }
