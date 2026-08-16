@@ -10,12 +10,17 @@ import { services } from './data';
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
   const [slide, setSlide] = useState(0);
-  const heroPhotos=['/gallery/galeria-01.jpg','/gallery/galeria-13.jpg','/gallery/galeria-03.jpg','/gallery/galeria-28.jpg'];
+  const heroPhotos=[
+    {src:'/gallery/galeria-01.jpg',position:'62% center'},
+    {src:'/gallery/galeria-13.jpg',position:'center',flip:true},
+    {src:'/gallery/galeria-03.jpg',position:'center',flip:true},
+    {src:'/gallery/galeria-28.jpg',position:'center',flip:true},
+  ];
   useEffect(()=>{const timer=setInterval(()=>setSlide(s=>(s+1)%heroPhotos.length),6500);return()=>clearInterval(timer)},[]);
   return <main><SiteHeader/>
-    <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((src,i)=><div key={src} className={`hero-bg ${slide===i?'active':''}`} style={{backgroundImage:`url(${src})`}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
+    <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((photo,i)=><div key={photo.src} className={`hero-bg ${photo.flip?'flip':''} ${slide===i?'active':''}`} style={{backgroundImage:`url(${photo.src})`,backgroundPosition:photo.position}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
       <h1>Profesjonalne usługi<br/><em>stomatologiczne.</em></h1>
-      <div className="hero-checklist"><span><Check/> Kompleksowa oferta leczenia</span><span><Check/> Jeden zespół wielu specjalizacji</span><span><Check/> Przejrzysty plan leczenia</span><span><Check/> Rozwiązania dopasowane do Ciebie</span></div>
+      <div className="hero-checklist"><span><Check/> Kompleksowa oferta leczenia</span><span><Check/> Jeden zespół wielu specjalizacji</span><span><Check/> Rozwiązania dopasowane do Ciebie</span></div>
       <div className="hero-buttons"><a className="btn primary" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a><a className="btn ghost" href="/oferta">Poznaj ofertę</a></div>
       <div className="hero-proof" aria-label="Oceny pacjentów"><div><b>4,8 <span>★★★★★</span></b><small>Google • 119 opinii</small></div><i/><div><b>5,0 <span>★★★★★</span></b><small>RankingLekarzy.pl • 26 opinii Grzegorza Ptaka</small></div></div>
     </div></div></section>
