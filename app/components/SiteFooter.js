@@ -1,6 +1,6 @@
 import { Facebook, MapPin, Phone } from 'lucide-react';
 
-const hours=[['Poniedziałek','10.00 - 20.00'],['Wtorek','9.00 - 20.00'],['Środa','9.00 - 20.00'],['Czwartek','9.00 - 20.00'],['Piątek','9.00 - 20.00'],['Sobota','9.00 - 16.00']];
+const hours=[['Poniedziałek','9.00 - 20.00'],['Wtorek','9.00 - 20.00'],['Środa','9.00 - 20.00'],['Czwartek','9.00 - 20.00'],['Piątek','9.00 - 20.00'],['Sobota','9.00 - 16.00']];
 
 export default function SiteFooter(){return <footer><div className="shell footer-main footer-official">
   <div><a className="brand footer-brand" href="/"><img className="official-logo" src="/ptak/logo.svg" alt="Ptak Stomatologia"/></a><p>Wysoka jakość świadczonych usług<br/>i skuteczność leczenia.</p></div>

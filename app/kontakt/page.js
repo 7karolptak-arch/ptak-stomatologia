@@ -5,7 +5,7 @@ import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
 import { services } from '../data';
 
-const hours=[['Poniedziałek','10.00 - 20.00'],['Wtorek','9.00 - 20.00'],['Środa','9.00 - 20.00'],['Czwartek','9.00 - 20.00'],['Piątek','9.00 - 20.00'],['Sobota','9.00 - 16.00']];
+const hours=[['Poniedziałek','9.00 - 20.00'],['Wtorek','9.00 - 20.00'],['Środa','9.00 - 20.00'],['Czwartek','9.00 - 20.00'],['Piątek','9.00 - 20.00'],['Sobota','9.00 - 16.00']];
 
 export default function Kontakt(){const [sent,setSent]=useState(false);return <main><SiteHeader/>
 <section className="contact-page section"><div className="shell"><div className="contact-page-intro"><p className="eyebrow"><span/> KONTAKT</p><h1>Skontaktuj się z rejestracją</h1><p>Umów wizytę telefonicznie, mailowo lub skorzystaj z formularza.</p></div><div className="contact-page-grid"><div className="contact-details"><div className="contact-cards"><a href="tel:+48664065582"><Phone/><span><small>Telefon</small><b>664 06 55 82</b></span></a><a href="mailto:rejestracja@ptakstomatologia.pl"><Mail/><span><small>E-mail</small><b>rejestracja@ptakstomatologia.pl</b></span></a><div><MapPin/><span><small>Adres</small><b>ul. Ady Sari 38<br/>34-100 Wadowice</b></span></div></div><div className="company-data"><h3>Dane firmy</h3><p>PTAK STOMATOLOGIA sp. z o.o.</p><p><b>NIP:</b> 5512657728</p><p><b>REGON:</b> 523848403</p></div><div className="contact-hours"><h3><Clock3/> Godziny otwarcia</h3>{hours.map(([d,h])=><span key={d}><i>{d}</i><b>{h}</b></span>)}</div></div>
