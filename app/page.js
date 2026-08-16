@@ -50,6 +50,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [pricesOpen, setPricesOpen] = useState(false);
+  const [activeService, setActiveService] = useState(0);
 
   const go = (id) => {
     setOpen(false);
@@ -69,8 +70,7 @@ export default function Home() {
       <header className="nav-wrap">
         <div className="shell nav">
           <button className="brand" onClick={() => go('#start')} aria-label="Przejdź na początek">
-            <span className="brand-mark bird-mark"><span>P</span></span>
-            <span className="brand-copy"><b>PTAK</b><small>STOMATOLOGIA</small></span>
+            <img className="official-logo" src="/ptak/logo.svg" alt="Ptak Stomatologia"/>
           </button>
           <nav className={open ? 'nav-links open' : 'nav-links'} aria-label="Główna nawigacja">
             <button onClick={() => go('#uslugi')}>Oferta <ChevronDown size={14}/></button>
@@ -82,7 +82,7 @@ export default function Home() {
           </nav>
           <div className="nav-actions">
             <a className="social" href="https://www.facebook.com/ptakstomatologia" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={18}/></a>
-            <button className="nav-cta" onClick={() => go('#kontakt')}>Umów wizytę <ArrowRight size={17}/></button>
+            <a className="nav-phone" href="tel:+48664065582"><Phone size={17}/> 664 06 55 82</a>
           </div>
           <button className="menu" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X/> : <Menu/>}</button>
         </div>
@@ -121,8 +121,8 @@ export default function Home() {
             <div className="photo-note"><Sparkles size={25}/><b>Komfortowe miejsce<br/>i przyjazna atmosfera</b></div>
           </div>
           <div className="intro-copy">
-            <p className="eyebrow"><span/> PTAK STOMATOLOGIA</p>
-            <h2>Jakość i skuteczność<br/><em>bez kompromisów</em></h2>
+            <p className="eyebrow"><span/> STOMATOLOG WADOWICE</p>
+            <h2>Poznaj nas.<br/><em>Ptak Stomatologia.</em></h2>
             <p>Myślą przewodnią gabinetu jest wysoka jakość świadczonych usług i skuteczność leczenia. Chcemy, aby efekt solidnie wykonanego zabiegu zachował się jak najdłużej.</p>
             <p>Każdy pacjent traktowany jest indywidualnie. Lekarz przedstawia najlepszy plan leczenia i pomaga podjąć świadome decyzje dotyczące rozwiązań terapeutycznych oraz finansowych.</p>
             <div className="signature-row"><span className="signature">Grzegorz Ptak</span><small>lekarz dentysta, implantolog<br/>założyciel gabinetu</small></div>
@@ -134,14 +134,25 @@ export default function Home() {
       <section className="services section" id="uslugi">
         <div className="shell">
           <div className="section-head split">
-            <div><p className="eyebrow"><span/> PEŁNA OFERTA</p><h2>Kompleksowe leczenie.<br/><em>W jednym miejscu.</em></h2></div>
+            <div><p className="eyebrow"><span/> JAK MOŻEMY CI POMÓC</p><h2>Nasze usługi</h2></div>
             <p>Nowoczesny sprzęt i wysokiej jakości materiały pozwalają prowadzić leczenie z zakresu implantologii, chirurgii, ortodoncji, endodoncji, protetyki i stomatologii zachowawczej.</p>
           </div>
-          <div className="service-grid">
-            {services.map((s) => <article className="service-card" key={s.n}>
-              <div className="service-top"><span className="service-icon">{s.icon}</span><small>{s.n}</small></div>
-              <h3>{s.title}</h3><p>{s.text}</p><button onClick={() => go('#kontakt')} aria-label={`Zapytaj o ${s.title}`}><ArrowRight/></button>
-            </article>)}
+          <div className="service-list">
+            {services.map((s, index) => {
+              const expanded = activeService === index;
+              return <article className={`service-row ${expanded ? 'expanded' : ''}`} key={s.n}>
+                <button className="service-trigger" onClick={() => setActiveService(expanded ? -1 : index)} aria-expanded={expanded}>
+                  <span className="service-number">{s.n}</span>
+                  <span className="service-symbol">{s.icon}</span>
+                  <span className="service-title">{s.title}</span>
+                  <ChevronDown className="service-chevron"/>
+                </button>
+                <div className="service-detail">
+                  <div><p>{s.text}</p><button className="service-cta" onClick={() => go('#kontakt')}>Zapytaj o leczenie <ArrowRight size={17}/></button></div>
+                  <span className="service-watermark">{s.icon}</span>
+                </div>
+              </article>;
+            })}
           </div>
         </div>
       </section>
@@ -245,7 +256,7 @@ export default function Home() {
 
       <footer>
         <div className="shell footer-main">
-          <div><div className="brand footer-brand"><span className="brand-mark bird-mark"><span>P</span></span><span className="brand-copy"><b>PTAK</b><small>STOMATOLOGIA</small></span></div><p>Wysoka jakość usług i skuteczność leczenia.</p></div>
+          <div><div className="brand footer-brand"><img className="official-logo" src="/ptak/logo.svg" alt="Ptak Stomatologia"/></div><p>Wysoka jakość usług i skuteczność leczenia.</p></div>
           <div><b>Nawigacja</b><a href="#uslugi">Oferta</a><a href="#zespol">Zespół</a><a href="#rtg">Pracownia RTG</a><a href="#cennik">Cennik</a></div>
           <div><b>Kontakt</b><a href="tel:+48664065582">664 06 55 82</a><a href="mailto:rejestracja@ptakstomatologia.pl">rejestracja@ptakstomatologia.pl</a><span>ul. Ady Sari 38<br/>34-100 Wadowice</span></div>
           <div><b>Godziny</b><span>Pon–Pt: 9:00–20:00</span><span>Sobota: po uzgodnieniu</span><div className="footer-social"><a href="https://www.facebook.com/ptakstomatologia" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook/></a></div></div>
