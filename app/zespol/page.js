@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
+import PageHero from '../components/PageHero';
 
 const team = [
   {name:'Grzegorz Ptak',role:'lekarz dentysta, implantolog, założyciel gabinetu PTAK STOMATOLOGIA',image:'/ptak/grzegorz.jpg',bio:['Absolwent Wydziału Lekarsko-Dentystycznego Collegium Medicum Uniwersytetu Jagiellońskiego. Założyciel gabinetu, który od 2021 roku działa w nowej siedzibie jako PTAK STOMATOLOGIA.','Ukończył międzynarodowe Curriculum Implantologiczne DGOI. Łączy wieloletnie doświadczenie kliniczne z ciepłym, życzliwym podejściem do pacjentów.'],scope:'stomatologia zachowawcza, endodoncja, protetyka, chirurgia, implantologia'},
@@ -25,6 +26,6 @@ function Profile({person,index}) { return <article className={`team-profile ${in
   <div className="team-profile-copy"><small>{person.group || 'Lekarze'}</small><h2>{person.name}</h2><h3>{person.role}</h3>{person.bio.map((p,i)=><p key={i}>{p}</p>)}{person.scope&&<div className="team-scope"><b>Zakres usług</b><span>{person.scope}</span></div>}</div>
   </article> }
 
-export default function TeamPage(){return <main><SiteHeader/><section className="subhero team-hero"><div className="shell"><p className="breadcrumb"><a href="/">Strona główna</a> / Zespół</p><p className="eyebrow light"><span/> ZESPÓŁ PTAK STOMATOLOGIA</p><h1>Poznaj ludzi,<br/><em>którzy dbają o Twój uśmiech.</em></h1><p>Lekarze wielu specjalizacji oraz zespół, który dba o komfort pacjenta na każdym etapie wizyty.</p></div></section>
+export default function TeamPage(){return <main><SiteHeader/><PageHero title="Zespół" image="/ptak/clinic-team.jpg" position="center 38%"/>
   <section className="team-profiles"><div className="shell"><div className="team-profiles-intro"><p className="eyebrow"><span/> NASI SPECJALIŚCI</p><h2>Doświadczenie, precyzja<br/><em>i uważna opieka.</em></h2></div>{team.map((p,i)=><Profile key={p.name} person={p} index={i}/>)}</div></section>
   <section className="cta-band"><div className="shell"><div><p className="eyebrow light"><span/> PIERWSZY KROK</p><h2>Umów konsultację</h2></div><a className="btn primary" href="/kontakt">Przejdź do rejestracji <ArrowRight/></a></div></section><SiteFooter/></main>}

@@ -1,6 +1,7 @@
 import { Check, ChevronRight, Clock3, Disc3, ScanLine, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
+import PageHero from '../components/PageHero';
 
 const pointUses = [
   'wykrywanie zmian zapalnych i kontrola gojenia tkanek okołowierzchołkowych',
@@ -28,14 +29,7 @@ function CheckList({items}) {
 }
 
 export default function RtgPage(){return <main><SiteHeader/>
-  <section className="rtg-official-hero">
-    <div className="shell">
-      <p className="breadcrumb"><a href="/">Strona główna</a> / Pracownia RTG</p>
-      <p className="eyebrow light"><span/> DIAGNOSTYKA NA MIEJSCU</p>
-      <h1>Pracownia RTG</h1>
-      <p>Nowoczesna diagnostyka rentgenowska w Ptak Stomatologia</p>
-    </div>
-  </section>
+  <PageHero title="Pracownia RTG" image="/gallery/galeria-04.jpg" position="center 48%"/>
 
   <nav className="rtg-jump" aria-label="Spis treści"><div className="shell">
     <a href="#pracownia">Pracownia</a><a href="#zdjecia-punktowe">Zdjęcia punktowe</a><a href="#pantomografia">Pantomografia</a><a href="#cbct">Tomografia CBCT</a><a href="#cefalometria">Cefalometria</a><a href="#skierowanie">Skierowanie</a>
