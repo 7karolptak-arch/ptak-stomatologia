@@ -24,7 +24,7 @@ export default function Home() {
       <p className="eyebrow"><span/> KLINIKA PTAK STOMATOLOGIA W WADOWICACH</p><h2>Poznaj nas.</h2>
       <p>Myślą przewodnią gabinetu jest wysoka jakość świadczonych usług i skuteczność leczenia. Chcemy, aby efekt solidnie wykonanego zabiegu zachował się jak najdłużej.</p>
       <p>Każdy pacjent traktowany jest indywidualnie. Lekarz przedstawia najlepszy plan leczenia i pomaga podjąć świadome decyzje terapeutyczne oraz finansowe.</p>
-      <a className="text-link" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a>
+      <div className="intro-actions"><a className="text-link intro-team-link" href="/zespol">Poznaj zespół <ArrowRight size={18}/></a><a className="text-link" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a></div>
     </div></div></section>
 
     <section className="services section" id="uslugi"><div className="shell"><div className="section-head split"><div><p className="eyebrow"><span/> JAK MOŻEMY CI POMÓC</p><h2>Nasze usługi</h2></div></div><div className="home-services-grid"><div className="service-list">

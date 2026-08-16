@@ -91,3 +91,7 @@ html{scroll-padding-top:145px}
 .offer-page .official-offer .elementor-top-section:first-child{display:none!important}
 @media(prefers-reduced-motion:reduce){.page-photo-hero>img,.page-photo-hero h1{transform:none!important;opacity:1!important}}
 @media(max-width:720px){.page-photo-hero{height:390px}.page-photo-hero>img{inset:-4%;width:108%;height:108%}.page-photo-hero h1{font-size:clamp(48px,15vw,68px);white-space:normal;width:92%}.page-photo-hero:after{bottom:24px;height:32px}}
+
+.offer-bottom h2{color:#fff}
+.intro-actions{display:flex;align-items:center;gap:13px;margin-top:28px}.intro-actions .text-link{margin-top:0;gap:14px}.intro-team-link{background:transparent!important;color:var(--navy)!important;border:1px solid rgba(28,45,60,.28)}.intro-team-link:hover{background:var(--cream)!important;border-color:var(--gold);transform:translateY(-2px)}
+@media(max-width:600px){.intro-actions{align-items:stretch;flex-direction:column}.intro-actions .text-link{justify-content:space-between}}
