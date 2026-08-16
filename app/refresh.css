@@ -90,3 +90,11 @@
 .team-profile.klaudia-profile .team-profile-photo{height:560px}
 .team-profile.klaudia-profile .team-profile-photo img{object-position:center top}
 @media(max-width:900px){.team-profile.klaudia-profile.reverse{grid-template-columns:1fr}.team-profile.klaudia-profile .team-profile-photo{height:auto;aspect-ratio:4/5}}
+
+/* Larger desktop navigation and static gold signature in hero */
+@media(min-width:1001px){.nav{gap:10px}.nav-links{gap:4px;justify-content:space-around}.nav-links>a,.nav-offer{padding:0 14px}.nav-links a{font-size:16px!important;font-weight:600}.nav-offer:after{top:62%;width:min(980px,calc(100vw - 18px));height:72px}}
+.hero .hero-shade{background:linear-gradient(90deg,rgba(13,29,41,.84) 0%,rgba(17,34,47,.52) 48%,rgba(17,34,47,.08) 100%)!important}
+.hero .hero-shade:after{content:'';position:absolute;right:5%;top:58%;width:390px;height:72px;background:linear-gradient(105deg,transparent 0 6%,#8d5f12 12%,#d6a63d 25%,#f1d27b 42%,#b77f1c 60%,#e6bd60 77%,transparent 94%);clip-path:polygon(0 62%,9% 45%,19% 53%,29% 31%,41% 40%,52% 17%,63% 33%,74% 18%,84% 28%,100% 8%,96% 19%,85% 39%,75% 30%,64% 45%,53% 30%,42% 53%,30% 44%,20% 65%,10% 57%,2% 75%);filter:drop-shadow(0 0 7px rgba(232,188,83,.55)) drop-shadow(0 0 16px rgba(177,118,25,.22));opacity:.88;pointer-events:none}
+.hero .hero-shade:before{content:'';position:absolute;right:13%;top:61%;width:145px;height:2px;background:linear-gradient(90deg,transparent,#fff0b8,#c88d27,transparent);transform:rotate(-8deg);box-shadow:0 0 9px rgba(255,224,147,.7);opacity:.85}
+@media(max-width:1000px){.hero .hero-shade:after{right:2%;width:270px;opacity:.58}.hero .hero-shade:before{display:none}}
+@media(max-width:720px){.hero .hero-shade:after{display:none}}
