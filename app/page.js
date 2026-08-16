@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, Check, ChevronDown, MapPin, Users } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown } from 'lucide-react';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import Gallery from './components/Gallery';
@@ -20,14 +20,14 @@ export default function Home() {
       <div className="hero-proof" aria-label="Oceny pacjentów"><div><b>4,8 <span>★★★★★</span></b><small>Google • 119 opinii</small></div><i/><div><b>5,0 <span>★★★★★</span></b><small>RankingLekarzy.pl • 26 opinii Grzegorza Ptaka</small></div></div>
     </div></div></section>
 
-    <section className="intro section" id="o-nas"><div className="shell intro-grid"><div className="photo-stack intro-photo-new"><img className="photo-main" src="/ptak/clinic-team.jpg" alt="Zespół Ptak Stomatologia w Wadowicach"/><div className="intro-location"><MapPin/><span><small>PTAK STOMATOLOGIA</small><b>ul. Ady Sari 38, Wadowice</b></span></div><div className="intro-team-chip"><Users/><span>Jeden zespół<br/><b>wielu specjalizacji</b></span></div></div><div className="intro-copy">
+    <section className="intro section" id="o-nas"><div className="shell intro-grid"><div className="photo-stack intro-photo-new"><img className="photo-main" src="/ptak/clinic-team.jpg" alt="Zespół Ptak Stomatologia w Wadowicach"/></div><div className="intro-copy">
       <p className="eyebrow"><span/> KLINIKA PTAK STOMATOLOGIA W WADOWICACH</p><h2>Poznaj nas.</h2>
       <p>Myślą przewodnią gabinetu jest wysoka jakość świadczonych usług i skuteczność leczenia. Chcemy, aby efekt solidnie wykonanego zabiegu zachował się jak najdłużej.</p>
       <p>Każdy pacjent traktowany jest indywidualnie. Lekarz przedstawia najlepszy plan leczenia i pomaga podjąć świadome decyzje terapeutyczne oraz finansowe.</p>
       <a className="text-link" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a>
     </div></div></section>
 
-    <section className="services section" id="uslugi"><div className="shell"><div className="section-head split"><div><p className="eyebrow"><span/> JAK MOŻEMY CI POMÓC</p><h2>Nasze usługi</h2></div><p>Kompleksowe leczenie prowadzone przez zespół lekarzy różnych specjalizacji.</p></div><div className="home-services-grid"><div className="service-list">
+    <section className="services section" id="uslugi"><div className="shell"><div className="section-head split"><div><p className="eyebrow"><span/> JAK MOŻEMY CI POMÓC</p><h2>Nasze usługi</h2></div></div><div className="home-services-grid"><div className="service-list">
       {services.map((s,index)=>{const expanded=activeService===index;return <article className={`service-row ${expanded?'expanded':''}`} key={s.n}><button className="service-trigger" onClick={()=>setActiveService(expanded?-1:index)} aria-expanded={expanded}><span className="service-number">{s.n}</span><span className="service-title">{s.title}</span><ChevronDown className="service-chevron"/></button><div className="service-detail"><div><p>{s.text}</p><div className="service-actions"><a className="service-cta" href={`/oferta#${s.slug}`}>Dowiedz się więcej <ArrowRight size={17}/></a><a className="service-cta secondary" href="/kontakt">Zapytaj o leczenie</a></div></div></div></article>})}
     </div><div className="services-photo"><img src="/gallery/galeria-03.jpg" alt="Gabinet Ptak Stomatologia"/><div><small>KOMPLEKSOWA OPIEKA</small><b>Wszystkie etapy leczenia<br/>w jednym miejscu.</b></div></div></div></div></section>
 
