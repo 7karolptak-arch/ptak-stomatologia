@@ -10,7 +10,7 @@ import { services } from './data';
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
   const [slide, setSlide] = useState(0);
-  const heroPhotos=['/gallery/galeria-01.jpg','/gallery/galeria-13.jpg','/gallery/galeria-03.jpg','/gallery/galeria-28.jpg'];
+  const heroPhotos=['/hero-custom/gabinet.webp','/hero-custom/elewacja.webp','/hero-custom/recepcja.webp','/hero-custom/pylon.webp'];
   useEffect(()=>{const timer=setInterval(()=>setSlide(s=>(s+1)%heroPhotos.length),6500);return()=>clearInterval(timer)},[]);
   return <main><SiteHeader/>
     <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((src,i)=><div key={src} className={`hero-bg ${slide===i?'active':''}`} style={{backgroundImage:`url(${src})`}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
