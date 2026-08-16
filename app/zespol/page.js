@@ -20,7 +20,7 @@ const team = [
   {name:'Małgorzata Ptak',role:'magister zdrowia publicznego, menadżer gabinetu PTAK STOMATOLOGIA',image:'/ptak/malgorzata.jpg',bio:['Absolwentka Collegium Medicum Uniwersytetu Jagiellońskiego na Wydziale Ochrony Zdrowia. Doświadczenie zdobywała m.in. w Agencji Oceny Technologii Medycznych.','W gabinecie odpowiada za profesjonalną obsługę pacjenta i stałe podnoszenie jakości organizacji pracy.'],group:'Rejestracja i zarządzanie'}
 ];
 
-function Profile({person,index}) { return <article className={`team-profile ${index%2?'reverse':''}`}>
+function Profile({person,index}) { return <article className={`team-profile ${index%2?'reverse':''} ${person.name==='Klaudia Smajek'?'klaudia-profile':''}`}>
   <div className={`team-profile-photo ${!person.image?'empty':''}`}>{person.image?<img src={person.image} alt={person.name}/>:<span>{person.name.split(' ').slice(0,2).map(x=>x[0]).join('')}</span>}</div>
   <div className="team-profile-copy"><small>{person.group || 'Lekarze'}</small><h2>{person.name}</h2><h3>{person.role}</h3>{person.bio.map((p,i)=><p key={i}>{p}</p>)}{person.scope&&<div className="team-scope"><b>Zakres usług</b><span>{person.scope}</span></div>}</div>
   </article> }
