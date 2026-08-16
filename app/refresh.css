@@ -109,3 +109,4 @@
 @media(max-width:1000px){.hero .hero-slides{inset:-10%}.hero .hero-shade:after{right:-5%;width:320px;opacity:.5}}
 
 @media(min-width:1001px){.nav-links a{font-size:18px!important;line-height:1.2;letter-spacing:-.015em}.nav-links{gap:2px}.nav-links>a,.nav-offer{padding-left:12px;padding-right:12px}}
+.hero .hero-shade:after,.hero .hero-shade:before{display:none!important}
