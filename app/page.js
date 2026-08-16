@@ -17,7 +17,7 @@ export default function Home() {
       <h1>Profesjonalne Usługi<br/><em>Stomatologiczne.</em></h1>
       <div className="hero-checklist"><span><Check/> Kompleksowa oferta leczenia</span><span><Check/> Jeden zespół wielu specjalizacji</span><span><Check/> Rozwiązania dopasowane do Ciebie</span></div>
       <div className="hero-buttons"><a className="btn primary" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a><a className="btn ghost" href="/oferta">Poznaj ofertę</a></div>
-      <div className="hero-proof" aria-label="Oceny pacjentów"><div><b>4,8 <span>★★★★★</span></b><small>Google • 119 opinii</small></div><i/><div><b>5,0 <span>★★★★★</span></b><small>RankingLekarzy.pl • 26 opinii Grzegorza Ptaka</small></div></div>
+      <div className="hero-proof" aria-label="Oceny pacjentów"><a href="https://www.google.com/maps/search/?api=1&query=PTAK+STOMATOLOGIA+Ady+Sari+38+Wadowice" target="_blank" rel="noreferrer" aria-label="Zobacz opinie Ptak Stomatologia w Google"><b>4,8 <span>★★★★★</span></b><small>Google • 119 opinii</small></a><i/><a href="https://www.rankinglekarzy.pl/grzegorz-ptak-28649" target="_blank" rel="noreferrer" aria-label="Zobacz opinie o Grzegorzu Ptaku w RankingLekarzy.pl"><b>5,0 <span>★★★★★</span></b><small>RankingLekarzy.pl • 26 opinii Grzegorza Ptaka</small></a></div>
     </div></div></section>
 
     <section className="intro section" id="o-nas"><div className="shell intro-grid"><div className="photo-stack intro-photo-new"><img className="photo-main" src="/ptak/clinic-team.jpg" alt="Zespół Ptak Stomatologia w Wadowicach"/></div><div className="intro-copy">
