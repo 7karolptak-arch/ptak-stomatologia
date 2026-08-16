@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, MapPin, Users } from 'lucide-react';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import Gallery from './components/Gallery';
@@ -14,14 +14,14 @@ export default function Home() {
   useEffect(()=>{const timer=setInterval(()=>setSlide(s=>(s+1)%heroPhotos.length),6500);return()=>clearInterval(timer)},[]);
   return <main><SiteHeader/>
     <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((src,i)=><div key={src} className={`hero-bg ${slide===i?'active':''}`} style={{backgroundImage:`url(${src})`}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
-      <p className="eyebrow light"><span/> KOMPLEKSOWA STOMATOLOGIA • WADOWICE</p><h1>Twój uśmiech.<br/><em>Dobrze zaplanowany.</em></h1>
-      <p className="hero-lead">Od pierwszej konsultacji po zakończenie leczenia — jeden zespół, przejrzysty plan i rozwiązania dopasowane do Ciebie.</p>
+      <h1>Profesjonalne usługi<br/><em>stomatologiczne.</em></h1>
+      <div className="hero-checklist"><span><Check/> Kompleksowa oferta leczenia</span><span><Check/> Jeden zespół wielu specjalizacji</span><span><Check/> Przejrzysty plan leczenia</span><span><Check/> Rozwiązania dopasowane do Ciebie</span></div>
       <div className="hero-buttons"><a className="btn primary" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a><a className="btn ghost" href="/oferta">Poznaj ofertę</a></div>
       <div className="hero-proof" aria-label="Oceny pacjentów"><div><b>4,8 <span>★★★★★</span></b><small>Google • 119 opinii</small></div><i/><div><b>5,0 <span>★★★★★</span></b><small>RankingLekarzy.pl • 26 opinii Grzegorza Ptaka</small></div></div>
     </div></div></section>
 
-    <section className="intro section" id="o-nas"><div className="shell intro-grid"><div className="photo-stack"><img className="photo-main" src="/ptak/reception.jpg" alt="Recepcja Ptak Stomatologia w Wadowicach"/><div className="photo-note"><Sparkles size={25}/><b>Komfortowe miejsce<br/>i przyjazna atmosfera</b></div></div><div className="intro-copy">
-      <p className="eyebrow"><span/> STOMATOLOG WADOWICE</p><h2>Poznaj nas.<br/><em>Ptak Stomatologia.</em></h2>
+    <section className="intro section" id="o-nas"><div className="shell intro-grid"><div className="photo-stack intro-photo-new"><img className="photo-main" src="/ptak/clinic-team.jpg" alt="Zespół Ptak Stomatologia w Wadowicach"/><div className="intro-location"><MapPin/><span><small>PTAK STOMATOLOGIA</small><b>ul. Ady Sari 38, Wadowice</b></span></div><div className="intro-team-chip"><Users/><span>Jeden zespół<br/><b>wielu specjalizacji</b></span></div></div><div className="intro-copy">
+      <p className="eyebrow"><span/> KLINIKA PTAK STOMATOLOGIA W WADOWICACH</p><h2>Poznaj nas.</h2>
       <p>Myślą przewodnią gabinetu jest wysoka jakość świadczonych usług i skuteczność leczenia. Chcemy, aby efekt solidnie wykonanego zabiegu zachował się jak najdłużej.</p>
       <p>Każdy pacjent traktowany jest indywidualnie. Lekarz przedstawia najlepszy plan leczenia i pomaga podjąć świadome decyzje terapeutyczne oraz finansowe.</p>
       <a className="text-link" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a>
