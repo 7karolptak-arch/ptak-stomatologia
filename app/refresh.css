@@ -107,3 +107,5 @@
 /* Softer, polished gold arc */
 .hero .hero-shade:after{right:4%;top:51%;width:430px;height:190px;background:conic-gradient(from 212deg,#765015,#c98f25,#f4d98c,#a66c14,#e9bf62,#7f5518,#dca843);clip-path:polygon(0 0,100% 0,100% 63%,80% 48%,60% 58%,40% 45%,20% 64%,0 52%);-webkit-mask:radial-gradient(ellipse at 50% 74%,transparent 0 61%,#000 62% 64%,transparent 65%);mask:radial-gradient(ellipse at 50% 74%,transparent 0 61%,#000 62% 64%,transparent 65%);filter:drop-shadow(0 0 5px rgba(244,211,130,.55)) drop-shadow(0 0 13px rgba(166,108,20,.24));opacity:.82}.hero .hero-shade:before{right:14%;top:57%;width:120px;height:1px;background:linear-gradient(90deg,transparent,#fff0bf,#d39a32,transparent);transform:rotate(-5deg);box-shadow:0 0 8px rgba(255,225,155,.65);opacity:.7}
 @media(max-width:1000px){.hero .hero-slides{inset:-10%}.hero .hero-shade:after{right:-5%;width:320px;opacity:.5}}
+
+@media(min-width:1001px){.nav-links a{font-size:18px!important;line-height:1.2;letter-spacing:-.015em}.nav-links{gap:2px}.nav-links>a,.nav-offer{padding-left:12px;padding-right:12px}}
