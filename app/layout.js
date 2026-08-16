@@ -12,6 +12,7 @@ export async function generateMetadata() {
   return {
     title,
     description,
+    icons: { icon: '/favicon.svg' },
     openGraph: { title, description, images: [{ url: image, width: 1200, height: 630 }] },
     twitter: { card: 'summary_large_image', title, description, images: [image] },
   };

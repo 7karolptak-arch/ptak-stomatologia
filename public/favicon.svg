@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="gold-v4" x1="118" y1="98" x2="394" y2="414" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b37a2c"/>
+      <stop offset=".32" stop-color="#ecd57a"/>
+      <stop offset=".7" stop-color="#ab7633"/>
+      <stop offset=".88" stop-color="#e5c76f"/>
+      <stop offset="1" stop-color="#a57130"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="156" fill="#0b2530"/>
+  <g transform="translate(113 68) scale(2.5)">
+    <path fill="url(#gold-v4)" fill-rule="evenodd" clip-rule="evenodd" d="M80.795 10.705 92.413 18.51l-7.152 13.402-21.582-13.132 17.116-8.075Zm.809 139.295L57.211 96.74 32.818 150 6.125 45.93 0 22.048 32.818 0l24.393 14.844L81.604 0l32.818 22.048-6.125 23.882L81.604 150ZM54.186 90.135 28.998 35.14l-14.274 6.733 21.169 82.535 18.293-34.273ZM27.877 32.693 21.53 18.832l-10.847 7.287 3.78 14.737 13.414-8.163ZM22.009 18.51l7.153 13.402 21.581-13.132-17.116-8.075-11.618 7.805Zm8.496 15.919 26.706 50.038 26.706-50.038-26.706-12.598-26.706 12.598Zm62.387-15.597 10.847 7.287-3.781 14.737-13.414-8.163 6.348-13.861Zm6.806 23.041-21.169 82.535-18.293-34.273L85.444 35.14l14.274 6.733Z"/>
+  </g>
+</svg>
