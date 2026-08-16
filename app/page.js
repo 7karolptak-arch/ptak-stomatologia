@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(()=>{const timer=setInterval(()=>setSlide(s=>(s+1)%heroPhotos.length),6500);return()=>clearInterval(timer)},[]);
   return <main><SiteHeader/>
     <section className="hero" id="start"><div className="hero-slides">{heroPhotos.map((src,i)=><div key={src} className={`hero-bg ${slide===i?'active':''}`} style={{backgroundImage:`url(${src})`}}/>)}</div><div className="hero-shade"/><div className="shell hero-grid"><div className="hero-copy">
-      <h1>Profesjonalne usługi<br/><em>stomatologiczne.</em></h1>
+      <h1>Profesjonalne Usługi<br/><em>Stomatologiczne.</em></h1>
       <div className="hero-checklist"><span><Check/> Kompleksowa oferta leczenia</span><span><Check/> Jeden zespół wielu specjalizacji</span><span><Check/> Rozwiązania dopasowane do Ciebie</span></div>
       <div className="hero-buttons"><a className="btn primary" href="/kontakt">Umów konsultację <ArrowRight size={18}/></a><a className="btn ghost" href="/oferta">Poznaj ofertę</a></div>
       <div className="hero-proof" aria-label="Oceny pacjentów"><div><b>4,8 <span>★★★★★</span></b><small>Google • 119 opinii</small></div><i/><div><b>5,0 <span>★★★★★</span></b><small>RankingLekarzy.pl • 26 opinii Grzegorza Ptaka</small></div></div>
