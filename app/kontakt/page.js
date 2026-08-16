@@ -11,7 +11,7 @@ const hours=[['Poniedziałek','9.00 - 20.00'],['Wtorek','9.00 - 20.00'],['Środa
 export default function Kontakt(){
   const [sent,setSent]=useState(false);
   const submit=e=>{e.preventDefault();const f=new FormData(e.currentTarget);const subject=encodeURIComponent('Prośba o kontakt — '+f.get('name'));const body=encodeURIComponent(`Imię i nazwisko: ${f.get('name')}\nTelefon: ${f.get('phone')}\nE-mail: ${f.get('email')}\nTemat: ${f.get('topic')}\n\nWiadomość:\n${f.get('message')}`);window.location.href=`mailto:rejestracja@ptakstomatologia.pl?subject=${subject}&body=${body}`;setSent(true)};
-  return <main><SiteHeader/><PageHero title="Kontakt" image="/ptak/hero-2.jpg" position="center 48%"/>
+  return <main><SiteHeader/><PageHero title="Kontakt" image="/page-heroes/kontakt.png" position="center 52%"/>
     <section className="contact-page section"><div className="shell">
       <div className="contact-page-intro"><p className="eyebrow"><span/> KONTAKT</p><h1>Skontaktuj się z rejestracją</h1><p>Umów wizytę telefonicznie, mailowo lub skorzystaj z formularza.</p></div>
       <div className="contact-cards contact-cards-wide"><a href="tel:+48664065582"><Phone/><span><small>Telefon</small><b>664 06 55 82</b></span></a><a href="mailto:rejestracja@ptakstomatologia.pl"><Mail/><span><small>E-mail</small><b>rejestracja@ptakstomatologia.pl</b></span></a><div><MapPin/><span><small>Adres</small><b>ul. Ady Sari 38<br/>34-100 Wadowice</b></span></div></div>

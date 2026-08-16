@@ -29,7 +29,7 @@ function CheckList({items}) {
 }
 
 export default function RtgPage(){return <main><SiteHeader/>
-  <PageHero title="Pracownia RTG" image="/gallery/galeria-04.jpg" position="center 48%"/>
+  <PageHero title="Pracownia RTG" image="/page-heroes/rtg.png" position="center 48%"/>
 
   <nav className="rtg-jump" aria-label="Spis treści"><div className="shell">
     <a href="#pracownia">Pracownia</a><a href="#zdjecia-punktowe">Zdjęcia punktowe</a><a href="#pantomografia">Pantomografia</a><a href="#cbct">Tomografia CBCT</a><a href="#cefalometria">Cefalometria</a><a href="#skierowanie">Skierowanie</a>

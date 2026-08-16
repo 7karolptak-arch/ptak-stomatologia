@@ -17,7 +17,7 @@ const groups=[
  ['Diagnostyka RTG',[['Zdjęcie punktowe','30–50 zł'],['Zdjęcie panoramiczne OPG','110 zł'],['Tomografia szczęki i żuchwy','270 zł'],['Tomografia szczęki lub żuchwy','220 zł'],['Mikrotomografia','130 zł'],['Zdjęcie cefalometryczne','100 zł']]]
 ];
 
-export default function PricePage(){const [open,setOpen]=useState(0);return <main><SiteHeader/><PageHero title="Cennik" image="/ptak/reception.jpg" position="center 42%"/>
+export default function PricePage(){const [open,setOpen]=useState(0);return <main><SiteHeader/><PageHero title="Cennik" image="/page-heroes/cennik.png" position="center 48%"/>
   <section className="price-intro"><div className="shell price-intro-compact"><div><p className="eyebrow"><span/> WAŻNE</p><h2>Cennik od 02.2026 r.</h2></div><p>Ostateczny koszt zależy od sytuacji klinicznej i jest omawiany po konsultacji. <a href="tel:+48664065582"><Phone/> 664 06 55 82</a></p></div></section>
   <section className="price-catalog section"><div className="shell"><div className="price-list">{groups.map(([title,rows],i)=><article className={`price-group ${open===i?'open':''}`} key={title}><button onClick={()=>setOpen(open===i?-1:i)} aria-expanded={open===i}><span>{String(i+1).padStart(2,'0')}</span><h2>{title}</h2><ChevronDown/></button><div className="price-panel">{rows.map(([name,price,desc])=><div className="catalog-row" key={name}><div><h3>{name}</h3>{desc&&<p>{desc}</p>}</div><b>{price}</b></div>)}</div></article>)}</div></div></section>
   <section className="cta-band"><div className="shell"><div><p className="eyebrow light"><span/> KONSULTACJA</p><h2>Porozmawiajmy o leczeniu</h2></div><a className="btn primary" href="/#kontakt">Umów konsultację <ArrowRight/></a></div></section><SiteFooter/></main>}
