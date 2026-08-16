@@ -1,28 +1,22 @@
 import './globals.css';
-import { headers } from 'next/headers';
 
-export async function generateMetadata() {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get('x-forwarded-host') || requestHeaders.get('host') || 'localhost:3000';
-  const protocol = requestHeaders.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
-  const image = `${protocol}://${host}/og.png`;
-  const title = 'Ptak Stomatologia — gabinet stomatologiczny w Wadowicach';
-  const description = 'Kompleksowe leczenie stomatologiczne, implantologia, ortodoncja i diagnostyka RTG w Wadowicach.';
+const title = 'Ptak Stomatologia — gabinet stomatologiczny w Wadowicach';
+const description = 'Kompleksowe leczenie stomatologiczne, implantologia, ortodoncja i diagnostyka RTG w Wadowicach.';
 
-  return {
-    title,
-    description,
-    icons: {
-      icon: [
-        { url: '/favicon.ico', sizes: 'any' },
-        { url: '/favicon.svg', type: 'image/svg+xml' },
-      ],
-      apple: '/apple-touch-icon.png',
-    },
-    openGraph: { title, description, images: [{ url: image, width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', title, description, images: [image] },
-  };
-}
+export const metadata = {
+  metadataBase: new URL('https://klinika-usmiechu-nova.opbxedits.chatgpt.site'),
+  title,
+  description,
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: { title, description, images: [{ url: '/og.png', width: 1200, height: 630 }] },
+  twitter: { card: 'summary_large_image', title, description, images: ['/og.png'] },
+};
 
 export default function RootLayout({ children }) {
   return (

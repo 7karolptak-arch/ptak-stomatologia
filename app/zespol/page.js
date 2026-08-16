@@ -22,10 +22,10 @@ const team = [
 ];
 
 function Profile({person,index}) { return <article className={`team-profile ${index%2?'reverse':''} ${person.name==='Klaudia Smajek'?'klaudia-profile':''}`}>
-  <div className={`team-profile-photo ${!person.image?'empty':''}`}>{person.image?<img src={person.image} alt={person.name}/>:<span>{person.name.split(' ').slice(0,2).map(x=>x[0]).join('')}</span>}</div>
+  <div className={`team-profile-photo ${!person.image?'empty':''}`}>{person.image?<img src={person.image} alt={person.name} loading="lazy" decoding="async"/>:<span>{person.name.split(' ').slice(0,2).map(x=>x[0]).join('')}</span>}</div>
   <div className="team-profile-copy"><small>{person.group || 'Lekarze'}</small><h2>{person.name}</h2><h3>{person.role}</h3>{person.bio.map((p,i)=><p key={i}>{p}</p>)}{person.scope&&<div className="team-scope"><b>Zakres usług</b><span>{person.scope}</span></div>}</div>
   </article> }
 
-export default function TeamPage(){return <main><SiteHeader/><PageHero title="Zespół" image="/page-heroes/zespol.png" position="center 42%"/>
+export default function TeamPage(){return <main><SiteHeader/><PageHero title="Zespół" image="/page-heroes/zespol.webp" position="center 42%"/>
   <section className="team-profiles"><div className="shell"><div className="team-profiles-intro"><p className="eyebrow"><span/> NASI SPECJALIŚCI</p><h2>Doświadczenie, precyzja<br/><em>i uważna opieka.</em></h2></div>{team.map((p,i)=><Profile key={p.name} person={p} index={i}/>)}</div></section>
   <section className="cta-band"><div className="shell"><div><p className="eyebrow light"><span/> PIERWSZY KROK</p><h2>Umów konsultację</h2></div><a className="btn primary" href="/kontakt">Przejdź do rejestracji <ArrowRight/></a></div></section><SiteFooter/></main>}
