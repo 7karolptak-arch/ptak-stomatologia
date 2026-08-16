@@ -57,3 +57,9 @@ footer{background:#0b2530;color:#b8c5c9;padding:66px 0 20px}.footer-main{display
 .nav-offer:after{content:'';position:absolute;top:72%;left:50%;width:min(800px,calc(100vw - 32px));height:52px;transform:translateX(-50%);pointer-events:none}
 .nav-offer.dropdown-open:after,.nav-offer:hover:after{pointer-events:auto}
 @media(max-width:900px){.nav-offer:after{display:none}}
+
+html{scroll-padding-top:145px}
+@keyframes heroPremiumZoom{from{transform:scale(1.075)}to{transform:scale(.985)}}
+.hero .hero-bg.active{animation:heroPremiumZoom 6.5s ease-out both}
+@media(max-width:900px){html{scroll-padding-top:105px}}
+@media(prefers-reduced-motion:reduce){.hero .hero-bg.active{animation:none}}
