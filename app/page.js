@@ -8,7 +8,7 @@ import Gallery from './components/Gallery';
 import { services } from './data';
 
 export default function Home() {
-  const [activeService, setActiveService] = useState(0);
+  const [activeService, setActiveService] = useState(-1);
   const [slide, setSlide] = useState(0);
   const heroPhotos=['/hero-custom/gabinet.webp','/hero-custom/elewacja.webp','/hero-custom/recepcja.webp','/hero-custom/pylon.webp'];
   useEffect(()=>{const timer=setInterval(()=>setSlide(s=>(s+1)%heroPhotos.length),6500);return()=>clearInterval(timer)},[]);
